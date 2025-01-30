@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: create schema
+      author: diego.m
+      preConditions:
+        - sqlCheck:
+            dbms:
+            expectedResult: 0
+            sql: SELECT COUNT(*) FROM information_schema.schemata WHERE schema_name = '${schema.name}';
+        - onFail: WARN
+        - onFailMessage: Schema ${schema.name} already exists!
+      changes:
+        - sql:
+            dbms: mysql
+            sql: CREATE SCHEMA IF NOT EXISTS ${schema.name}
+            endDelimiter: ;

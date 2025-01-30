@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: learning
+  sql:
+    init:
+      platform: mysql
+  datasource:
+    url: jdbc:mysql://localhost:3306/learning_cards
+    username: root
+    password: admin
+  liquibase:
+    enabled: true
+    change-log: db.changelog/changelog.yml
+    database-change-log-table: liquibase_databasechangelog
+    database-change-log-lock-table: liquibase_databasechangeloglock
+    parameters:
+      schema:
+#        TODO: will be changed to use environment variables
+        name: learning_cards
