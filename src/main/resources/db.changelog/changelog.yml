@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - preConditions:
+      - onFail: HALT
+      - and:
+          - onFailMessage:
+              Parameter "schema.name" is not defined.
+              Expected a value for spring.liquibase.parameters.schema.name in application.yml
+          - changeLogPropertyDefined:
+              property: schema.name
+
+  - include:
+      file: changes/create-schema.lqb.yml
+      relativeToChangelogFile: true
