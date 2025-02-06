@@ -1,0 +1,48 @@
+databaseChangeLog:
+  - changeSet:
+      id: create table deck
+      author: diego.moya
+      preConditions:
+        - not:
+            - tableExists:
+                schemaName: ${schema.name}
+                tableName:  type
+            - onFail: WARN
+            - onFailMessage: Table 'type' already exists!
+      changes:
+        - createTable:
+            schemaName: ${schema.name}
+            tableName: type
+            columns:
+              - column:
+                  name: id #PK
+                  type: ${data-type.id}
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              # DEFAULT COLUMNS
+              - column:
+                  name: ${column.created}
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ${column.updated}
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ${column.created-by}
+                  type: ${data-type.user-id}
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ${column.updated-by}
+                  type: ${data-type.user-id}
+                  constraints:
+                    nullable: false

@@ -17,3 +17,11 @@ spring:
       schema:
 #        TODO: will be changed to use environment variables
         name: learning_cards
+      data-type:
+        id: uuid
+        user-id: varchar(255)
+      column:
+        created: created
+        updated: update
+        created-by: created_by
+        updated-by: updated_by
