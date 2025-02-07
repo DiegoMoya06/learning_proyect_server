@@ -1,0 +1,66 @@
+databaseChangeLog:
+  - changeSet:
+      id: create table deck
+      author: diego.moya
+      preConditions:
+        - not:
+            - tableExists:
+                schemaName: ${schema.name}
+                tableName:  deck
+            - onFail: WARN
+            - onFailMessage: Table 'deck' already exists!
+        - and:
+            - tableExists:
+                schemaName: ${schema.name}
+                tableName: type
+            - onFail: HALT
+            - onFailMessage: Required table 'type' is missing!
+      changes:
+        - createTable:
+            schemaName: ${schema.name}
+            tableName: deck
+            columns:
+              - column:
+                  name: id #PK
+                  type: ${data-type.id}
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(700)
+              - column:
+                  name: type_id
+                  type: ${data-type.id}
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_deck_type
+                    referencedTableSchemaName: ${schema.name}
+                    referencedTableName: type
+                    referencedColumnNames: id
+              # DEFAULT COLUMNS
+              - column:
+                  name: ${column.created}
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ${column.updated}
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ${column.created-by}
+                  type: ${data-type.user-id}
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ${column.updated-by}
+                  type: ${data-type.user-id}
+                  constraints:
+                    nullable: false
