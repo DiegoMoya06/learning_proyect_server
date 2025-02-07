@@ -6,8 +6,8 @@ spring:
       platform: mysql
   datasource:
     url: jdbc:mysql://localhost:3306/learning_cards
-    username: root
-    password: admin
+    username: DB_USR_1
+    password: x#2M8e)#m0@V1J+>J(!3
   liquibase:
     enabled: true
     change-log: db.changelog/changelog.yml
@@ -17,3 +17,11 @@ spring:
       schema:
 #        TODO: will be changed to use environment variables
         name: learning_cards
+      data-type:
+        id: uuid
+        user-id: varchar(255)
+      column:
+        created: created
+        updated: update
+        created-by: created_by
+        updated-by: updated_by
