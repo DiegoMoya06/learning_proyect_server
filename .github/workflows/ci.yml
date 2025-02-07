@@ -15,10 +15,9 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_ROOT_PASSWORD: admin
           MYSQL_DATABASE: learning_cards
-          MYSQL_USER: root
-          MYSQL_PASSWORD: admin
+          MYSQL_USER: DB_USR_1
+          MYSQL_PASSWORD: 'x#2M8e)#m0@V1J+>J(!3'
         ports:
           -  3306:3306
         options: >-
