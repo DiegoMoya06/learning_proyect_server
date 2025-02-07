@@ -6,8 +6,8 @@ spring:
       platform: mysql
   datasource:
     url: jdbc:mysql://localhost:3306/learning_cards
-    username: root
-    password: admin
+    username: DB_USR_1
+    password: x#2M8e)#m0@V1J+>J(!3
   liquibase:
     enabled: true
     change-log: db.changelog/changelog.yml
