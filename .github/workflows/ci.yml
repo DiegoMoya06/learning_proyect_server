@@ -11,6 +11,21 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: learning_cards
+          MYSQL_USER: DB_USR_1
+          MYSQL_PASSWORD: 'x#2M8e)#m0@V1J+>J(!3'
+        ports:
+          -  3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -uuser -ppassword"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
