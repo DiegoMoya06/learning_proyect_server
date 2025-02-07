@@ -11,3 +11,12 @@ databaseChangeLog:
   - include:
       file: changes/create-schema.lqb.yml
       relativeToChangelogFile: true
+  - include:
+        file: changes/type.lqb.yml
+        relativeToChangelogFile: true
+  - include:
+        file: changes/deck.lqb.yml
+        relativeToChangelogFile: true
+  - include:
+        file: changes/card.lqb.yml
+        relativeToChangelogFile: true

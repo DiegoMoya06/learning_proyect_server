@@ -1,24 +1,24 @@
 databaseChangeLog:
   - changeSet:
-      id: create table deck
+      id: create table card
       author: diego.moya
       preConditions:
         - not:
             - tableExists:
                 schemaName: ${schema.name}
-                tableName:  deck
+                tableName:  card
             - onFail: WARN
-            - onFailMessage: Table 'deck' already exists!
+            - onFailMessage: Table 'card' already exists!
         - and:
             - tableExists:
                 schemaName: ${schema.name}
-                tableName: type
+                tableName: deck
             - onFail: HALT
-            - onFailMessage: Required table 'type' is missing!
+            - onFailMessage: Required table 'deck' is missing!
       changes:
         - createTable:
             schemaName: ${schema.name}
-            tableName: deck
+            tableName: card
             columns:
               - column:
                   name: id #PK
@@ -27,7 +27,7 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: name
+                  name: title
                   type: varchar(255)
                   constraints:
                     nullable: false
@@ -35,13 +35,13 @@ databaseChangeLog:
                   name: description
                   type: varchar(700)
               - column:
-                  name: type_id
+                  name: card_id
                   type: ${data-type.id}
                   constraints:
                     nullable: false
-                    foreignKeyName: fk_deck_type
+                    foreignKeyName: fk_card_deck
                     referencedTableSchemaName: ${schema.name}
-                    referencedTableName: type
+                    referencedTableName: deck
                     referencedColumnNames: id
               # DEFAULT COLUMNS
               - column:
