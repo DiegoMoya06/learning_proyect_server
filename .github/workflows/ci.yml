@@ -23,10 +23,10 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_ROOT_PASSWORD: "${LC_DB_ROOT_PASSWORD}"
-          MYSQL_DATABASE: "${LC_DB_SCHEMA}"
-          MYSQL_USER: "${LC_DB_USERNAME}"
-          MYSQL_PASSWORD: "${LC_DB_PASSWORD}"
+          MYSQL_ROOT_PASSWORD: "$LC_DB_ROOT_PASSWORD"
+          MYSQL_DATABASE: "$LC_DB_SCHEMA"
+          MYSQL_USER: "$LC_DB_USERNAME"
+          MYSQL_PASSWORD: "$LC_DB_PASSWORD"
         ports:
           -  3306:3306
         options: >-
@@ -47,7 +47,8 @@ jobs:
           cache: maven
 
       - name: Debug Environment Variables
-        run: echo "$GITHUB_CONTEXT"
+        run: |
+          echo $LC_DB_USERNAME >> secrets.txt
 
       - name: Build and Run Tests
         run: mvn clean verify
