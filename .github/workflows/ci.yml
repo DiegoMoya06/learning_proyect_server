@@ -27,7 +27,7 @@ jobs:
           MYSQL_USER: ${{ env.LC_DB_USERNAME }}
           MYSQL_PASSWORD: ${{ env.LC_DB_PASSWORD }}
         ports:
-          -  ${{ env.LC_DB_PORT }}:3306
+          -  3306:3306
         options: >-
           --health-cmd="mysqladmin ping -h localhost -uuser -ppassword"
           --health-interval=10s
