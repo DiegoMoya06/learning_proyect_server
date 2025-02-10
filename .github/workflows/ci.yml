@@ -11,14 +11,21 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      LC_DB_USERNAME: ${{ secrets.LC_DB_USERNAME }}
+      LC_DB_PASSWORD: ${{ secrets.LC_DB_PASSWORD }}
+      LC_DB_SCHEMA: ${{ secrets.LC_DB_SCHEMA }}
+      LC_DB_ROOT_PASSWORD: ${{ secrets.LC_DB_ROOT_PASSWORD }}
+      LC_DB_PORT: ${{ secrets.LC_DB_PORT }}
+
     services:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_ROOT_PASSWORD: admin
-          MYSQL_DATABASE: learning_cards
-          MYSQL_USER: DB_USR_1
-          MYSQL_PASSWORD: 'x#2M8e)#m0@V1J+>J(!3'
+          MYSQL_ROOT_PASSWORD: ${{ env.LC_DB_ROOT_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.LC_DB_SCHEMA }}
+          MYSQL_USER: ${{ env.LC_DB_USERNAME }}
+          MYSQL_PASSWORD: ${{ env.LC_DB_PASSWORD }}
         ports:
           -  3306:3306
         options: >-
