@@ -54,6 +54,13 @@ jobs:
 #      - name: Debug MySQL Container Environment
 #        run: docker exec -it mysql-db env | grep MYSQL
 
+      - name: Debug Environment Variables
+        run: |
+          echo "LC_DB_USERNAME=${{ secrets.LC_DB_USERNAME }}"
+#          echo "LC_DB_PASSWORD=${{ secrets.LC_DB_PASSWORD }}"
+          echo "LC_DB_SCHEMA=${{ secrets.LC_DB_SCHEMA }}"
+#          echo "LC_DB_ROOT_PASSWORD=${{ secrets.LC_DB_ROOT_PASSWORD }}"
+          echo "LC_DB_PORT=${{ secrets.LC_DB_PORT }}"
 
       - name: Build and Run Tests
         run: mvn clean verify
