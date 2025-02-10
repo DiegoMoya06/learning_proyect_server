@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      LC_DB_HOST: ${{ secrets.LC_DB_HOST }}
+      LC_DB_HOST: db
       LC_DB_PASSWORD: ${{ secrets.LC_DB_PASSWORD }}
       LC_DB_PORT: ${{ secrets.LC_DB_PORT }}
       LC_DB_ROOT_PASSWORD: ${{ secrets.LC_DB_ROOT_PASSWORD }}
