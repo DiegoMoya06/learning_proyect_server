@@ -20,13 +20,12 @@ services:
     container_name: mysql-db
     restart: always
     environment:
-#      TODO: will use environment variables in future
-      MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: learning_cards
-      MYSQL_USER: DB_USR_1
-      MYSQL_PASSWORD: x#2M8e)#m0@V1J+>J(!3
+      MYSQL_ROOT_PASSWORD: "${LC_DB_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${LC_DB_SCHEMA}"
+      MYSQL_USER: "${LC_DB_USERNAME}"
+      MYSQL_PASSWORD: "${LC_DB_PASSWORD}"
     ports:
-      - "3306:3306"
+      - "${LC_DB_PORT}:3306"
     volumes:
       - db_data:/var/lib/mysql
 

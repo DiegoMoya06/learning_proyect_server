@@ -5,9 +5,9 @@ spring:
     init:
       platform: mysql
   datasource:
-    url: jdbc:mysql://localhost:3306/learning_cards
-    username: DB_USR_1
-    password: x#2M8e)#m0@V1J+>J(!3
+    url: jdbc:mysql://${LC_DB_HOST}:${LC_DB_PORT}/${LC_DB_SCHEMA}
+    username: ${LC_DB_USERNAME}
+    password: ${LC_DB_PASSWORD}
   liquibase:
     enabled: true
     change-log: db.changelog/changelog.yml
@@ -15,8 +15,7 @@ spring:
     database-change-log-lock-table: liquibase_databasechangeloglock
     parameters:
       schema:
-#        TODO: will be changed to use environment variables
-        name: learning_cards
+        name: ${LC_DB_SCHEMA}
       data-type:
         id: uuid
         user-id: varchar(255)
