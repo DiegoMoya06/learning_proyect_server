@@ -5,10 +5,12 @@ spring:
     init:
       platform: mysql
   datasource:
-    url: jdbc:mysql://localhost:3306/${LC_DB_SCHEMA}
-#    TODO: check
+    url: jdbc:mysql://localhost:3306/${LC_DB_SCHEMA}?useSSL=false&allowPublicKeyRetrieval=true
     username: ${LC_DB_USERNAME}
     password: ${LC_DB_PASSWORD}
+#    TODO: check
+#    username: ${LC_DB_USERNAME}
+#    password: ${LC_DB_PASSWORD}
 #    username: DB_USR_1
 #    password: x#2M8e)#m0@V1J+>J(!3
   liquibase:
