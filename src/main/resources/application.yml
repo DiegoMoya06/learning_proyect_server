@@ -8,9 +8,9 @@ spring:
     url: jdbc:mysql://localhost:3306/${LC_DB_SCHEMA}
 #    TODO: check
     username: ${LC_DB_USERNAME}
-#    password: ${LC_DB_PASSWORD}
+    password: ${LC_DB_PASSWORD}
 #    username: DB_USR_1
-    password: x#2M8e)#m0@V1J+>J(!3
+#    password: x#2M8e)#m0@V1J+>J(!3
   liquibase:
     enabled: true
     change-log: db.changelog/changelog.yml
