@@ -47,7 +47,7 @@ jobs:
           cache: maven
 
       - name: Debug Environment Variables
-        run: env | grep LC_DB_PORT
+        run: echo "$GITHUB_CONTEXT"
 
       - name: Build and Run Tests
         run: mvn clean verify
