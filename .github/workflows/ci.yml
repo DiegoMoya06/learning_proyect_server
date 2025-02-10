@@ -11,15 +11,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-#    env:
-#      LC_DB_HOST: db
-#      LC_DB_PASSWORD: ${{ secrets.LC_DB_PASSWORD }}
-#      LC_DB_PORT: ${{ secrets.LC_DB_PORT }}
-#      LC_DB_ROOT_PASSWORD: ${{ secrets.LC_DB_ROOT_PASSWORD }}
-#      LC_DB_SCHEMA: ${{ secrets.LC_DB_SCHEMA }}
-#      LC_DB_USERNAME: ${{ secrets.LC_DB_USERNAME }}
-#      LC_DB_PORT_VR: ${{ vars.LC_DB_PORT_VR }}
-
     services:
       mysql:
         image: mysql:8.0
@@ -28,9 +19,6 @@ jobs:
           MYSQL_DATABASE: ${{ secrets.LC_DB_SCHEMA }}
           MYSQL_USER: ${{ secrets.LC_DB_USERNAME }}
           MYSQL_PASSWORD: ${{ secrets.LC_DB_PASSWORD }}
-#          MYSQL_DATABASE: learning_cards
-#          MYSQL_USER: DB_USR_1
-#          MYSQL_PASSWORD: x#2M8e)#m0@V1J+>J(!3
         ports:
           -  3306:3306
         options: >-
@@ -50,13 +38,13 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Debug Environment Variables
-        run: |
-          echo "LC_DB_USERNAME=${{ secrets.LC_DB_USERNAME }}" >> $GITHUB_ENV
-          echo "LC_DB_SCHEMA=${{ secrets.LC_DB_SCHEMA }}" >> $GITHUB_ENV
-          echo "LC_DB_PORT=${{ secrets.LC_DB_PORT }}" >> $GITHUB_ENV
-          echo "LC_DB_ROOT_PASSWORD=${{ secrets.LC_DB_ROOT_PASSWORD }}" >> $GITHUB_ENV
-          echo "LC_DB_PASSWORD=${{ secrets.LC_DB_PASSWORD }}" >> $GITHUB_ENV
+#      - name: Debug Environment Variables
+#        run: |
+#          echo "LC_DB_USERNAME=${{ secrets.LC_DB_USERNAME }}" >> $GITHUB_ENV
+#          echo "LC_DB_SCHEMA=${{ secrets.LC_DB_SCHEMA }}" >> $GITHUB_ENV
+#          echo "LC_DB_PORT=${{ secrets.LC_DB_PORT }}" >> $GITHUB_ENV
+#          echo "LC_DB_ROOT_PASSWORD=${{ secrets.LC_DB_ROOT_PASSWORD }}" >> $GITHUB_ENV
+#          echo "LC_DB_PASSWORD=${{ secrets.LC_DB_PASSWORD }}" >> $GITHUB_ENV
 
       - name: Build and Run Tests
         run: mvn clean verify
