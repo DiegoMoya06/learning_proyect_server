@@ -46,9 +46,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Debug Environment Variables
-        run: |
-          echo $LC_DB_USERNAME >> secrets.txt
+      - name: Debug MySQL Container Environment
+        run: docker exec mysql-db env | grep MYSQL
 
       - name: Build and Run Tests
         run: mvn clean verify
