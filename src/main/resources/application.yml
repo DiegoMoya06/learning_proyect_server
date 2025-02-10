@@ -5,7 +5,7 @@ spring:
     init:
       platform: mysql
   datasource:
-    url: jdbc:mysql://${LC_DB_HOST}:${LC_DB_PORT}/${LC_DB_SCHEMA}
+    url: jdbc:mysql://localhost:3306/${LC_DB_SCHEMA}
     username: ${LC_DB_USERNAME}
     password: ${LC_DB_PASSWORD}
   liquibase:
