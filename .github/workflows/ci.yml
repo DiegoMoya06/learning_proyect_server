@@ -25,7 +25,8 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: "$LC_DB_ROOT_PASSWORD"
           MYSQL_DATABASE: "$LC_DB_SCHEMA"
-          MYSQL_USER: "$LC_DB_USERNAME"
+#          MYSQL_USER: "$LC_DB_USERNAME"
+          MYSQL_USER: "DB_USR_1"
           MYSQL_PASSWORD: "$LC_DB_PASSWORD"
         ports:
           -  3306:3306
