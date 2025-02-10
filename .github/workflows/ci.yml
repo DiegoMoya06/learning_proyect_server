@@ -16,6 +16,7 @@ jobs:
       LC_DB_PASSWORD: ${{ secrets.LC_DB_PASSWORD }}
       LC_DB_SCHEMA: ${{ secrets.LC_DB_SCHEMA }}
       LC_DB_ROOT_PASSWORD: ${{ secrets.LC_DB_ROOT_PASSWORD }}
+      LC_DB_PORT: ${{ secrets.LC_DB_PORT }}
 
     services:
       mysql:
@@ -26,7 +27,7 @@ jobs:
           MYSQL_USER: ${{ env.LC_DB_USERNAME }}
           MYSQL_PASSWORD: ${{ env.LC_DB_PASSWORD }}
         ports:
-          -  3306:3306
+          -  ${{ env.LC_DB_PORT }}:3306
         options: >-
           --health-cmd="mysqladmin ping -h localhost -uuser -ppassword"
           --health-interval=10s
@@ -44,18 +45,5 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-#      - name: Debug Environment Variables
-#        run: |
-#          echo "LC_DB_USERNAME=${{ secrets.LC_DB_USERNAME }}" >> $GITHUB_ENV
-#          echo "LC_DB_SCHEMA=${{ secrets.LC_DB_SCHEMA }}" >> $GITHUB_ENV
-#          echo "LC_DB_PORT=${{ secrets.LC_DB_PORT }}" >> $GITHUB_ENV
-#          echo "LC_DB_ROOT_PASSWORD=${{ secrets.LC_DB_ROOT_PASSWORD }}" >> $GITHUB_ENV
-#          echo "LC_DB_PASSWORD=${{ secrets.LC_DB_PASSWORD }}" >> $GITHUB_ENV
-
       - name: Build and Run Tests
         run: mvn clean verify
-
-
-# TODO: remove
-#      - name: Debug MySQL Container Environment
-#        run: docker exec -it mysql-db env | grep MYSQL
