@@ -48,7 +48,12 @@ jobs:
 
       - name: Debug Environment Variables
         run: |
-          echo $LC_DB_USERNAME >> secrets.txt
+          import os
+          for q in (os.getenv("$LC_DB_USERNAME")):
+            print(q)
+          shell: python
+#        run: |
+#          echo $LC_DB_USERNAME >> secrets.txt
 
       - name: Build and Run Tests
         run: mvn clean verify
