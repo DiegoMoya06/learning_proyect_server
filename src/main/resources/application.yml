@@ -6,7 +6,9 @@ spring:
       platform: mysql
   datasource:
     url: jdbc:mysql://localhost:3306/${LC_DB_SCHEMA}
-    username: ${LC_DB_USERNAME}
+#    TODO: check
+#    username: ${LC_DB_USERNAME}
+    username: DB_USR_1
     password: ${LC_DB_PASSWORD}
   liquibase:
     enabled: true

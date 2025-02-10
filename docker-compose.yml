@@ -22,6 +22,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "${LC_DB_ROOT_PASSWORD}"
       MYSQL_DATABASE: "${LC_DB_SCHEMA}"
+#      TODO: check
 #      MYSQL_USER: "${LC_DB_USERNAME}"
       MYSQL_PASSWORD: "${LC_DB_PASSWORD}"
 #      MYSQL_ROOT_PASSWORD: "${LC_DB_ROOT_PASSWORD}"
