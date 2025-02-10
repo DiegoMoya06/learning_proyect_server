@@ -23,12 +23,12 @@ services:
       MYSQL_ROOT_PASSWORD: "${LC_DB_ROOT_PASSWORD}"
       MYSQL_DATABASE: "${LC_DB_SCHEMA}"
 #      TODO: check
-#      MYSQL_USER: "${LC_DB_USERNAME}"
-#      MYSQL_PASSWORD: "${LC_DB_PASSWORD}"
+      MYSQL_USER: "${LC_DB_USERNAME}"
+      MYSQL_PASSWORD: "${LC_DB_PASSWORD}"
 #      MYSQL_ROOT_PASSWORD: "${LC_DB_ROOT_PASSWORD}"
 #      MYSQL_DATABASE: learning_cards
-      MYSQL_USER: DB_USR_1
-      MYSQL_PASSWORD: x#2M8e)#m0@V1J+>J(!3
+#      MYSQL_USER: DB_USR_1
+#      MYSQL_PASSWORD: x#2M8e)#m0@V1J+>J(!3
     ports:
       - "${LC_DB_PORT}:3306"
     volumes:
