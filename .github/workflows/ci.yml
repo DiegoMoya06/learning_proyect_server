@@ -46,8 +46,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Debug MySQL Container Environment
-        run: docker exec mysql-db env | grep MYSQL
-
       - name: Build and Run Tests
         run: mvn clean verify
+
+      - name: Debug MySQL Container Environment
+        run: docker exec mysql-db env | grep MYSQL
