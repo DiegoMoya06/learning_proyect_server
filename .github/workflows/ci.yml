@@ -46,5 +46,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      - name: Debug Environment Variables
+        run: env | grep LC_DB_PORT
+
       - name: Build and Run Tests
         run: mvn clean verify
