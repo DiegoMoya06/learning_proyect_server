@@ -18,7 +18,7 @@ jobs:
       LC_DB_ROOT_PASSWORD: ${{ secrets.LC_DB_ROOT_PASSWORD }}
       LC_DB_SCHEMA: ${{ secrets.LC_DB_SCHEMA }}
       LC_DB_USERNAME: ${{ secrets.LC_DB_USERNAME }}
-      LC_DB_PORT_VR: ${{ variables.LC_DB_PORT_VR }}
+      LC_DB_PORT_VR: ${{ vars.LC_DB_PORT_VR }}
 
     services:
       mysql:
