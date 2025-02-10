@@ -53,10 +53,10 @@ jobs:
       - name: Debug Environment Variables
         run: |
           echo "LC_DB_USERNAME=${{ secrets.LC_DB_USERNAME }}" >> $GITHUB_ENV
-          echo "LC_DB_SCHEMA=${{ secrets.LC_DB_SCHEMA }}"
-          echo "LC_DB_PORT=${{ secrets.LC_DB_PORT }}"
-#          echo "LC_DB_ROOT_PASSWORD=${{ secrets.LC_DB_ROOT_PASSWORD }}"
-#          echo "LC_DB_PASSWORD=${{ secrets.LC_DB_PASSWORD }}"
+          echo "LC_DB_SCHEMA=${{ secrets.LC_DB_SCHEMA }}" >> $GITHUB_ENV
+          echo "LC_DB_PORT=${{ secrets.LC_DB_PORT }}" >> $GITHUB_ENV
+          echo "LC_DB_ROOT_PASSWORD=${{ secrets.LC_DB_ROOT_PASSWORD }}" >> $GITHUB_ENV
+          echo "LC_DB_PASSWORD=${{ secrets.LC_DB_PASSWORD }}" >> $GITHUB_ENV
 
       - name: Build and Run Tests
         run: mvn clean verify
