@@ -34,6 +34,6 @@ public class Deck extends BaseEntity {
     private Type type;
 
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "type", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "deck", fetch = FetchType.LAZY)
     private Set<Card> cards;
 }
