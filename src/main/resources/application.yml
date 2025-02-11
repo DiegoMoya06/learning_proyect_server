@@ -21,6 +21,6 @@ spring:
         user-id: varchar(255)
       column:
         created: created
-        updated: update
+        updated: updated
         created-by: created_by
         updated-by: updated_by
