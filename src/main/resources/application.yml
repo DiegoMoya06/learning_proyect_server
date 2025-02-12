@@ -13,9 +13,11 @@ spring:
     change-log: db.changelog/changelog.yml
     database-change-log-table: liquibase_databasechangelog
     database-change-log-lock-table: liquibase_databasechangeloglock
+    contexts: '!exampleData'
     parameters:
       schema:
         name: ${LC_DB_SCHEMA}
+        profile: ${LC_PROFILE:develop}
       data-type:
         id: uuid
         user-id: varchar(255)
@@ -24,3 +26,30 @@ spring:
         updated: updated
         created-by: created_by
         updated-by: updated_by
+
+  data:
+    rest:
+      base-path: /api
+
+
+---
+
+# Develop Properties
+spring:
+  config:
+    activate:
+      on-profile: develop
+  liquibase:
+    contexts: 'exampleData'
+    parameters:
+      example:
+        user-id:
+          - testUser-1
+          - testUser-2
+        type-id:
+          - 64f6331e-11f5-456d-afed-518451ec1eca
+          - 55ce92df-199c-42f2-a32f-dc6c12de8581
+        deck-id:
+          - d14cd912-3f45-48d9-bf8d-454d1d2ac5b9
+          - b99f14b7-8071-4859-968b-11023a98b497
+          - 7aaf600c-77f6-4e99-a557-0f0a9dd19357

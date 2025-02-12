@@ -7,7 +7,6 @@ import lombok.*;
 import java.util.Set;
 import java.util.UUID;
 
-@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,4 +35,24 @@ public class Deck extends BaseEntity {
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "deck", fetch = FetchType.LAZY)
     private Set<Card> cards;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public Set<Card> getCards() {
+        return cards;
+    }
 }

@@ -1,0 +1,97 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert example decks
+      author: diego.moya
+      preConditions:
+        - tableExists:
+            schemaName: ${schema.name}
+            tableName: deck
+        - onFail: WARN
+        - onFailMessage: Required table 'deck' not found!
+      changes:
+        - insert:
+            schemaName: ${schema.name}
+            tableName: deck
+            columns:
+              - column:
+                  name: id #PK
+                  value: ${example.deck-id.0}
+              - column:
+                  name: name
+                  value: 'Deck test #1'
+              - column:
+                  name: description
+                  value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a placerat dolor. Curabitur eget cursus arcu. Ut in tortor sed quam congue convallis. Aenean ut dui consectetur, iaculis nisi vel, dictum enim. '
+              - column:
+                  name: type_id
+                  value: ${example.type-id.0}
+              - column:
+                  name: ${column.created}
+                  value: now()
+              - column:
+                  name: ${column.updated}
+                  value: now()
+              - column:
+                  name: ${column.created-by}
+                  value: ${example.user-id.0}
+              - column:
+                  name: ${column.updated-by}
+                  value: ${example.user-id.0}
+
+        - insert:
+            schemaName: ${schema.name}
+            tableName: deck
+            columns:
+              - column:
+                  name: id #PK
+                  value: ${example.deck-id.1}
+              - column:
+                  name: name
+                  value: 'Deck test #2'
+              - column:
+                  name: description
+                  value: 'Proin maximus metus leo, nec hendrerit metus convallis sit amet. Aliquam urna lectus, malesuada sit amet dignissim ac, finibus vel eros. Vivamus malesuada est id orci lacinia, id iaculis nunc ornare. '
+              - column:
+                  name: type_id
+                  value: ${example.type-id.0}
+              - column:
+                  name: ${column.created}
+                  value: now()
+              - column:
+                  name: ${column.updated}
+                  value: now()
+              - column:
+                  name: ${column.created-by}
+                  value: ${example.user-id.1}
+              - column:
+                  name: ${column.updated-by}
+                  value: ${example.user-id.1}
+
+        - insert:
+            schemaName: ${schema.name}
+            tableName: deck
+            columns:
+              - column:
+                  name: id #PK
+                  value: ${example.deck-id.2}
+              - column:
+                  name: name
+                  value: 'Deck test #3'
+              - column:
+                  name: description
+                  value: 'Suspendisse lobortis nibh et magna porta maximus. In odio enim, pharetra eget luctus nec, pellentesque eu dolor. '
+              - column:
+                  name: type_id
+                  value: ${example.type-id.1}
+              - column:
+                  name: ${column.created}
+                  value: now()
+              - column:
+                  name: ${column.updated}
+                  value: now()
+              - column:
+                  name: ${column.created-by}
+                  value: ${example.user-id.1}
+              - column:
+                  name: ${column.updated-by}
+                  value: ${example.user-id.1}
