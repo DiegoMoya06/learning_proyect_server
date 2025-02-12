@@ -1,8 +1,8 @@
 package com.dm.learning.entities.base;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -11,10 +11,11 @@ import org.springframework.data.annotation.CreatedBy;
 
 import java.time.Instant;
 
-@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@MappedSuperclass
+//@EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
 
     /**
@@ -44,4 +45,20 @@ public class BaseEntity {
     @CreatedBy
     @Column(nullable = false, updatable = false)
     private String updatedBy;
+
+    public Instant getCreated() {
+        return created;
+    }
+
+    public Instant getUpdated() {
+        return updated;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
 }

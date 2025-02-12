@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,4 +28,16 @@ public class Type extends BaseEntity {
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "type", fetch = FetchType.LAZY)
     private Set<Deck> decks = new HashSet<>();
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Set<Deck> getDecks() {
+        return decks;
+    }
 }
