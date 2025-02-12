@@ -12,11 +12,21 @@ databaseChangeLog:
       file: changes/create-schema.lqb.yml
       relativeToChangelogFile: true
   - include:
-        file: changes/type.lqb.yml
-        relativeToChangelogFile: true
+      file: changes/type.lqb.yml
+      relativeToChangelogFile: true
   - include:
-        file: changes/deck.lqb.yml
-        relativeToChangelogFile: true
+      file: changes/deck.lqb.yml
+      relativeToChangelogFile: true
   - include:
-        file: changes/card.lqb.yml
-        relativeToChangelogFile: true
+      file: changes/card.lqb.yml
+      relativeToChangelogFile: true
+
+  # Example-data
+  - include:
+      file: example-data/example-types.lqb.yml
+      relativeToChangelogFile: true
+      context: exampleData
+  - include:
+      file: example-data/example-decks.lqb.yml
+      relativeToChangelogFile: true
+      context: exampleData

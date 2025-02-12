@@ -1,6 +1,5 @@
 package com.dm.learning.entities;
 
-import com.dm.learning.entities.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,11 +11,11 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode(callSuper = true)
+//@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "deck")
-public class Deck extends BaseEntity {
-
+//public class Deck extends BaseEntity  {
+public class Deck {
     @Id
     @GeneratedValue
     @Column(nullable = false, updatable = false)
