@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert example types
+      author: diego.moya
+      preConditions:
+        - tableExists:
+            schemaName: ${schema.name}
+            tableName: type
+        - onFail: WARN
+        - onFailMessage: Required table 'type' not found!
+      changes:
+        - insert:
+            schemaName: ${schema.name}
+            tableName: type
+            columns:
+              - column:
+                  name: id #PK
+                  value: ${example.type-id.0}
+              - column:
+                  name: name
+                  value: 'Manual'
+              - column:
+                  name: ${column.created}
+                  value: now()
+              - column:
+                  name: ${column.updated}
+                  value: now()
+              - column:
+                  name: ${column.created-by}
+                  value: ${example.user-id.0}
+              - column:
+                  name: ${column.updated-by}
+                  value: ${example.user-id.0}
+
+        - insert:
+            schemaName: ${schema.name}
+            tableName: type
+            columns:
+              - column:
+                  name: id #PK
+                  value: ${example.type-id.1}
+              - column:
+                  name: name
+                  value: 'Automatic'
+              - column:
+                  name: ${column.created}
+                  value: now()
+              - column:
+                  name: ${column.updated}
+                  value: now()
+              - column:
+                  name: ${column.created-by}
+                  value: ${example.user-id.1}
+              - column:
+                  name: ${column.updated-by}
+                  value: ${example.user-id.1}
