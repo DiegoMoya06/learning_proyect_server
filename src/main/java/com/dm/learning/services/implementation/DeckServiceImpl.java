@@ -21,6 +21,7 @@ public class DeckServiceImpl extends BaseServiceImpl<DeckRepository> implements 
     @Override
     @Transactional
     public List<DeckDto> getAllDecks() {
+        logger.info("Getting all Decks");
         Comparator<Deck> deckNameComparator = Comparator.comparing(Deck::getName);
 
         var entities = repository.findAllWithType();
