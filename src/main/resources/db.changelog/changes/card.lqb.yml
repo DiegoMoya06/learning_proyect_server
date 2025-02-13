@@ -35,7 +35,7 @@ databaseChangeLog:
                   name: description
                   type: varchar(700)
               - column:
-                  name: card_id
+                  name: deck_id
                   type: ${data-type.id}
                   constraints:
                     nullable: false
@@ -64,14 +64,3 @@ databaseChangeLog:
                   type: ${data-type.user-id}
                   constraints:
                     nullable: false
-
-  - changeSet:
-      id: rename card_id column to deck_id
-      author: diego.moya
-      changes:
-        - renameColumn:
-            schemaName: ${schema.name}
-            tableName: card
-            newColumnName: deck_id
-            columnDataType: ${data-type.id}
-            oldColumnName: card_id

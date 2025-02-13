@@ -20,8 +20,6 @@ databaseChangeLog:
   - include:
       file: changes/card.lqb.yml
       relativeToChangelogFile: true
-
-  # Example-data
   - include:
       file: example-data/example-types.lqb.yml
       relativeToChangelogFile: true
