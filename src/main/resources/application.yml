@@ -1,6 +1,8 @@
 spring:
   application:
     name: learning
+  profiles:
+    active: ${LC_PROFILE:develop}
   sql:
     init:
       platform: mysql
