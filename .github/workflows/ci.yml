@@ -17,6 +17,7 @@ jobs:
       LC_DB_SCHEMA: ${{ secrets.LC_DB_SCHEMA }}
       LC_DB_ROOT_PASSWORD: ${{ secrets.LC_DB_ROOT_PASSWORD }}
       LC_DB_PORT: ${{ secrets.LC_DB_PORT }}
+      LC_C_API_KEY: ${{ secrets.LC_C_API_KEY }}
 
     services:
       mysql:
