@@ -23,11 +23,12 @@ public class CGServiceImpl implements CGService {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     private final PdfService pdfService;
 
-    //    TODO: might be good to have it as env variable too
-    private static final String API_URL = "https://api.openai.com/v1/chat/completions";
-    private static final String FILE_API_URL = "https://api.openai.com/v1/files";
-    @Value("${LC_C_API_KEY}:api-key")
-    private String LC_API_KEY;
+    @Value("${LC_CG_CHAT_API_URL}")
+    private String API_URL;
+    @Value("${LC_CG_FILE_API_URL}")
+    private String FILE_API_URL;
+    @Value("${LC_C_API_KEY}")
+    private String LC_C_API_KEY;
 
     private final String INPUT = """
             I would like you to check this document, understand the main idea and rewrite the content on multiple\s
@@ -74,7 +75,7 @@ public class CGServiceImpl implements CGService {
     private HttpEntity<Map<String, Object>> createMsgRequest(String message) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBearerAuth(LC_API_KEY);
+        headers.setBearerAuth(LC_C_API_KEY);
 
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("model", "gpt-4");
@@ -86,7 +87,7 @@ public class CGServiceImpl implements CGService {
     @Override
     public String uploadFile(File file) {
         HttpHeaders headers = new HttpHeaders();
-        headers.setBearerAuth(LC_API_KEY);
+        headers.setBearerAuth(LC_C_API_KEY);
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();

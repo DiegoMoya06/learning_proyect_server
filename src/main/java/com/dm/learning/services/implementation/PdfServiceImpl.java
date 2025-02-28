@@ -17,7 +17,7 @@ public class PdfServiceImpl implements PdfService {
 
         PDFTextStripper pdfTextStripper = new PDFTextStripper();
         String text = pdfTextStripper.getText(document);
-
+System.out.println(text);
         document.close();
         return text;
     }

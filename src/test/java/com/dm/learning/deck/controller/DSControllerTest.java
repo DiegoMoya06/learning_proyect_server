@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -34,11 +35,15 @@ class DSControllerTest {
     void testSendInputFromFile() throws IOException {
         MultipartFile file = new MockMultipartFile("file",
                 "test.pdf", "application/pdf", "test-data".getBytes());
-        String expectedResponse = "Mocked response from service";
-        when(dsService.sendChatRequestWithFile(any(File.class))).thenReturn(expectedResponse);
+        String expectedServiceResponse = "Mocked response from service";
+        when(dsService.sendChatRequestWithFile(any(File.class))).thenReturn(expectedServiceResponse);
 
-        String actualResponse = dsController.sendInputFromFile(file);
+        ResponseEntity<String> actualResponse = dsController.sendInputFromFile(file);
+
+        ResponseEntity<String> expectedResponse = ResponseEntity.ok("Mocked response from service");
 
         assertEquals(expectedResponse, actualResponse);
     }
+
+
 }
