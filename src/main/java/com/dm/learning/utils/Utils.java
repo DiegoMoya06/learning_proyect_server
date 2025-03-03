@@ -28,7 +28,7 @@ public class Utils {
                 "4 0 obj\n" +
                 "<< /Length 44 >>\n" +
                 "stream\n" +
-                "BT /F1 12 Tf 100 700 Td (Hello, this is a mock PDF!) Tj ET\n" +
+                "BT /F1 12 Tf 100 700 Td (PDF Text example) Tj ET\n" +
                 "endstream\n" +
                 "endobj\n" +
                 "xref\n" +
