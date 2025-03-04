@@ -4,6 +4,7 @@ import com.dm.learning.entities.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @Getter
@@ -31,4 +32,16 @@ public class Card extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "deck_id")
     private Deck deck;
+
+    @Column(name = "rate", nullable = false)
+    private Double rate;
+
+    @Column(name = "displayed_times", nullable = false)
+    private Integer displayedTimes;
+
+    @Column(name = "last_displayed")
+    private Instant lastDisplayed;
+
+    @Column(name = "probability", nullable = false)
+    private Double probability;
 }

@@ -1,5 +1,6 @@
 package com.dm.learning.controllers;
 
+import com.dm.learning.dto.deck.NewAutomaticDeckDto;
 import com.dm.learning.exceptions.ApiRequestException;
 import com.dm.learning.exceptions.FileProcessingException;
 import com.dm.learning.services.DSService;
@@ -25,7 +26,7 @@ public class DSController extends BaseLogger {
     }
 
     @PostMapping("/send-input-from-file")
-    public ResponseEntity<String> sendInputFromFile(@RequestParam MultipartFile file) {
+    public ResponseEntity<NewAutomaticDeckDto> sendInputFromFile(@RequestParam MultipartFile file) {
         logger.info("DS-sendInputFromFile method was called");
 
         try {

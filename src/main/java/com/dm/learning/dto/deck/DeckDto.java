@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper = true)
-public class DeckDto  extends BaseDto {
+public class DeckDto extends BaseDto {
 
     private UUID id;
     private String name;

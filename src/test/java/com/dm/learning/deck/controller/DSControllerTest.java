@@ -1,6 +1,8 @@
 package com.dm.learning.deck.controller;
 
 import com.dm.learning.controllers.DSController;
+import com.dm.learning.dto.card.NewCardDto;
+import com.dm.learning.dto.deck.NewAutomaticDeckDto;
 import com.dm.learning.services.DSService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -35,12 +39,15 @@ class DSControllerTest {
     void testSendInputFromFile() throws IOException {
         MultipartFile file = new MockMultipartFile("file",
                 "test.pdf", "application/pdf", "test-data".getBytes());
-        String expectedServiceResponse = "Mocked response from service";
-        when(dsService.sendChatRequestWithFile(any(File.class))).thenReturn(expectedServiceResponse);
+        var testId = UUID.randomUUID();
+        var newCardDto = new NewCardDto();
+        var expectedNewDeck = new NewAutomaticDeckDto(testId, "Description test", List.of(newCardDto));
 
-        ResponseEntity<String> actualResponse = dsController.sendInputFromFile(file);
+        when(dsService.sendChatRequestWithFile(any(File.class))).thenReturn(expectedNewDeck);
 
-        ResponseEntity<String> expectedResponse = ResponseEntity.ok("Mocked response from service");
+        ResponseEntity<NewAutomaticDeckDto> actualResponse = dsController.sendInputFromFile(file);
+
+        ResponseEntity<NewAutomaticDeckDto> expectedResponse = ResponseEntity.ok(expectedNewDeck);
 
         assertEquals(expectedResponse, actualResponse);
     }

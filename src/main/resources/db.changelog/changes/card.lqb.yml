@@ -64,3 +64,38 @@ databaseChangeLog:
                   type: ${data-type.user-id}
                   constraints:
                     nullable: false
+
+  - changeSet:
+      id: add rate, displayedTimes, lastDisplayed and probability columns
+      author: diego.moya
+      preConditions:
+        - tableExists:
+            schemaName: ${schema.name}
+            tableName:  card
+        - onFail: HALT
+        - onFailMessage: Table 'card' doesn't exist!
+      changes:
+        - addColumn:
+            schemaName: ${schema.name}
+            tableName:  card
+            columns:
+              - column:
+                  name: rate
+                  type: decimal(3,1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: displayed_times
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_displayed
+                  type: timestamp
+                  constraints:
+                    nullable: true
+              - column:
+                  name: probability
+                  type: decimal(10,1)
+                  constraints:
+                    nullable: false

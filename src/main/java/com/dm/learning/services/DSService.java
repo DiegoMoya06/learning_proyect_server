@@ -1,8 +1,10 @@
 package com.dm.learning.services;
 
+import com.dm.learning.dto.deck.NewAutomaticDeckDto;
+
 import java.io.File;
 import java.io.IOException;
 
 public interface DSService {
-    String sendChatRequestWithFile(File file) throws IOException;
+    NewAutomaticDeckDto sendChatRequestWithFile(File file) throws IOException;
 }
