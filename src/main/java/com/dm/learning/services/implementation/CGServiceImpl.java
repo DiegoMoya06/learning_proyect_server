@@ -4,6 +4,7 @@ import com.dm.learning.services.CGService;
 import com.dm.learning.services.PdfService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.*;
@@ -46,7 +47,8 @@ public class CGServiceImpl implements CGService {
                         
             """;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    private RestTemplate restTemplate;
 
     public CGServiceImpl(PdfService pdfService) {
         this.pdfService = pdfService;
