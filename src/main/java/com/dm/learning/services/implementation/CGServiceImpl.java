@@ -24,8 +24,8 @@ public class CGServiceImpl implements CGService {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     private final PdfService pdfService;
 
-    @Value("${LC_CG_CHAT_API_URL:apiUrl}")
-    private String API_URL;
+//    @Value("${LC_CG_CHAT_API_URL:apiUrl}")
+    private final String API_URL = "apiUrl";
     @Value("${LC_CG_FILE_API_URL}")
     private String FILE_API_URL;
     @Value("${LC_C_API_KEY}")
