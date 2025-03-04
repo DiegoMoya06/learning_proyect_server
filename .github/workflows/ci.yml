@@ -17,7 +17,13 @@ jobs:
       LC_DB_SCHEMA: ${{ secrets.LC_DB_SCHEMA }}
       LC_DB_ROOT_PASSWORD: ${{ secrets.LC_DB_ROOT_PASSWORD }}
       LC_DB_PORT: ${{ secrets.LC_DB_PORT }}
+      
+      LC_CG_CHAT_API_URL: ${{ secrets.LC_CG_CHAT_API_URL }}
+      LC_CG_FILE_API_URL: ${{ secrets.LC_CG_FILE_API_URL }}
       LC_C_API_KEY: ${{ secrets.LC_C_API_KEY }}
+      
+      LC_DS_CHAT_API_URL: ${{ secrets.LC_DS_CHAT_API_URL }}
+      LC_DS_API_KEY: ${{ secrets.LC_DS_API_KEY }}
 
     services:
       mysql:
