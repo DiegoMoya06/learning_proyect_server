@@ -36,7 +36,7 @@ public class DSServiceImpl implements DSService {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${LC_DS_CHAT_API_URL}")
+    @Value("${LC_DS_CHAT_API_URL:apiUrl}")
     private String API_URL;
 
     @Value("${LC_DS_API_KEY}")
