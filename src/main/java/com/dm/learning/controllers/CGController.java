@@ -1,9 +1,12 @@
 package com.dm.learning.controllers;
 
+import com.dm.learning.services.CGService;
 import com.dm.learning.utils.BaseLogger;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
 
 @RestController
 @RequestMapping(path = "/cg_controller")
@@ -11,29 +14,29 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(maxAge = 3600)
 public class CGController extends BaseLogger {
 
-//    private final CGService cgService;
+    private final CGService cgService;
 
-//    public CGController(CGService cgService) {
-//        this.cgService = cgService;
-//    }
+    public CGController(CGService cgService) {
+        this.cgService = cgService;
+    }
 
-//    @PostMapping("/send-input-from-file")
-//    public String sendInputFromFile(@RequestParam MultipartFile file) throws IOException {
-//        logger.info("CG-sendInputFromFile method was called");
-//        File tempFile = File.createTempFile("upload-", file.getOriginalFilename());
-//        file.transferTo(tempFile);
-//        return cgService.sendChatRequestWithFile(tempFile);
-//    }
-//
-//    @PostMapping("/send-input")
-//    public String sendInput(@RequestParam String message) {
-//        return cgService.sendChatRequest(message);
-//    }
-//
-//    @PostMapping("/upload-file")
-//    public String uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
-//        File tempFile = File.createTempFile("upload-", file.getOriginalFilename());
-//        file.transferTo(tempFile);
-//        return cgService.uploadFile(tempFile);
-//    }
+    @PostMapping("/send-input-from-file")
+    public String sendInputFromFile(@RequestParam MultipartFile file) throws IOException {
+        logger.info("CG-sendInputFromFile method was called");
+        File tempFile = File.createTempFile("upload-", file.getOriginalFilename());
+        file.transferTo(tempFile);
+        return cgService.sendChatRequestWithFile(tempFile);
+    }
+
+    @PostMapping("/send-input")
+    public String sendInput(@RequestParam String message) {
+        return cgService.sendChatRequest(message);
+    }
+
+    @PostMapping("/upload-file")
+    public String uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+        File tempFile = File.createTempFile("upload-", file.getOriginalFilename());
+        file.transferTo(tempFile);
+        return cgService.uploadFile(tempFile);
+    }
 }
