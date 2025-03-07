@@ -51,7 +51,7 @@ class DSServiceImplTest {
 
     @Test
     void testTransformJsonToCardList_Success() throws IOException {
-        String jsonContent = "```json {\"generalDescription\": \"Test description\", \"cardsList\": []} ```";
+        String jsonContent = "```json {\"generalDescription\": \"Test description\", \"cardsList\": [ { \"title\": \"scheinen*\", \"description\": \"parecer, tener aspecto\", \"rate\": 1.0, \"probability\": 0.0    }, { \"title\": \"die Brille\", \"description\": \"gafas (singular femenino en alemán)\", \"rate\": 1.0, \"probability\": 0.0 }]} ```";
         Choice mockChoice = mock(Choice.class);
         ResponseMessage mockMessage = mock(ResponseMessage.class);
 
@@ -62,6 +62,8 @@ class DSServiceImplTest {
 
         assertNotNull(result);
         assertEquals("Test description", result.getGeneralDescription());
+        assertEquals(0.5, result.getCardsList().get(0).getProbability());
+        assertEquals(0.5, result.getCardsList().get(1).getProbability());
     }
 
     @Test
@@ -119,7 +121,7 @@ class DSServiceImplTest {
     }
 
     @Test
-    void testSendChatRequestWithFile_ApiFails(){
+    void testSendChatRequestWithFile_ApiFails() {
         File mockFile = mock(File.class);
         when(mockFile.length()).thenReturn(100L);
 
