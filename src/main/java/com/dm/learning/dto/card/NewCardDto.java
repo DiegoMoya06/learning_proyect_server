@@ -24,7 +24,7 @@ public class NewCardDto {
     private String description;
     private UUID deckId;
     private Double rate;
-    private Integer displayedTimes;
+    private Integer timesDisplayed;
     private Instant lastDisplayed;
     private Double probability;
 
@@ -34,7 +34,7 @@ public class NewCardDto {
         this.description = entity.getDescription();
         this.deckId = entity.getDeck().getId();
         this.rate = entity.getRate();
-        this.displayedTimes = entity.getDisplayedTimes();
+        this.timesDisplayed = entity.getTimesDisplayed();
         this.lastDisplayed = entity.getLastDisplayed();
         this.probability = entity.getProbability();
     }
@@ -57,5 +57,9 @@ public class NewCardDto {
 
     public static List<NewCardDto> fromEntitiesAsList(Collection<Card> entities) {
         return fromEntities(entities).toList();
+    }
+
+    public Double getRate() {
+        return rate;
     }
 }

@@ -37,7 +37,7 @@ public class Card extends BaseEntity {
     private Double rate;
 
     @Column(name = "displayed_times", nullable = false)
-    private Integer displayedTimes;
+    private Integer timesDisplayed;
 
     @Column(name = "last_displayed")
     private Instant lastDisplayed;

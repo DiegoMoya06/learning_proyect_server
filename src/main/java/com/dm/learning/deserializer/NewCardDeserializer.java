@@ -13,14 +13,13 @@ public class NewCardDeserializer extends JsonDeserializer<NewCardDto> {
     public NewCardDto deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
 
-//        TODO: add id and deckId
         NewCardDto cardDto = new NewCardDto();
         cardDto.setTitle(node.get("title").asText());
         cardDto.setDescription(node.get("description").asText());
         cardDto.setRate(node.get("rate").asDouble());
         cardDto.setProbability(node.get("probability").asDouble());
 
-        cardDto.setDisplayedTimes(0);
+        cardDto.setTimesDisplayed(0);
         cardDto.setLastDisplayed(null);
 
         return cardDto;

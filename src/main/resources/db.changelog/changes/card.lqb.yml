@@ -66,7 +66,7 @@ databaseChangeLog:
                     nullable: false
 
   - changeSet:
-      id: add rate, displayedTimes, lastDisplayed and probability columns
+      id: add rate, timesDisplayed, lastDisplayed and probability columns
       author: diego.moya
       preConditions:
         - tableExists:
@@ -85,7 +85,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: displayed_times
+                  name: times_displayed
                   type: integer
                   constraints:
                     nullable: false
