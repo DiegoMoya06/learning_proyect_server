@@ -6,24 +6,24 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  LC_DB_USERNAME: ${{ secrets.LC_DB_USERNAME }}
+  LC_DB_PASSWORD: ${{ secrets.LC_DB_PASSWORD }}
+  LC_DB_SCHEMA: ${{ secrets.LC_DB_SCHEMA }}
+  LC_DB_ROOT_PASSWORD: ${{ secrets.LC_DB_ROOT_PASSWORD }}
+  LC_DB_PORT: ${{ secrets.LC_DB_PORT }}
+
+  LC_CG_CHAT_API_URL: ${{ secrets.LC_CG_CHAT_API_URL }}
+  LC_CG_FILE_API_URL: ${{ secrets.LC_CG_FILE_API_URL }}
+  LC_C_API_KEY: ${{ secrets.LC_C_API_KEY }}
+
+  LC_DS_CHAT_API_URL: ${{ secrets.LC_DS_CHAT_API_URL }}
+  LC_DS_API_KEY: ${{ secrets.LC_DS_API_KEY }}
+
 jobs:
   build_job:
     name: Build and Test
     runs-on: ubuntu-latest
-
-    env:
-      LC_DB_USERNAME: ${{ secrets.LC_DB_USERNAME }}
-      LC_DB_PASSWORD: ${{ secrets.LC_DB_PASSWORD }}
-      LC_DB_SCHEMA: ${{ secrets.LC_DB_SCHEMA }}
-      LC_DB_ROOT_PASSWORD: ${{ secrets.LC_DB_ROOT_PASSWORD }}
-      LC_DB_PORT: ${{ secrets.LC_DB_PORT }}
-      
-      LC_CG_CHAT_API_URL: ${{ secrets.LC_CG_CHAT_API_URL }}
-      LC_CG_FILE_API_URL: ${{ secrets.LC_CG_FILE_API_URL }}
-      LC_C_API_KEY: ${{ secrets.LC_C_API_KEY }}
-      
-      LC_DS_CHAT_API_URL: ${{ secrets.LC_DS_CHAT_API_URL }}
-      LC_DS_API_KEY: ${{ secrets.LC_DS_API_KEY }}
 
     services:
       mysql:
@@ -61,7 +61,23 @@ jobs:
     name: Deploy backend to aws
     runs-on: ubuntu-latest
 
-    if: github.event_name == 'push'
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ env.LC_DB_ROOT_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.LC_DB_SCHEMA }}
+          MYSQL_USER: ${{ env.LC_DB_USERNAME }}
+          MYSQL_PASSWORD: ${{ env.LC_DB_PASSWORD }}
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -uuser -ppassword"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+#    if: github.event_name == 'push'
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

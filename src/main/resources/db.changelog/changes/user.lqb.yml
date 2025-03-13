@@ -1,18 +1,18 @@
 databaseChangeLog:
   - changeSet:
-      id: create table type
+      id: create table user
       author: diego.moya
       preConditions:
         - not:
             - tableExists:
                 schemaName: ${schema.name}
-                tableName:  type
+                tableName:  user
             - onFail: WARN
-            - onFailMessage: Table 'type' already exists!
+            - onFailMessage: Table 'user' already exists!
       changes:
         - createTable:
             schemaName: ${schema.name}
-            tableName: type
+            tableName: user
             columns:
               - column:
                   name: id #PK
@@ -21,7 +21,27 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(300)
+                  constraints:
+                    nullable: false
+              - column:
                   name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lastname
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
                   type: varchar(255)
                   constraints:
                     nullable: false

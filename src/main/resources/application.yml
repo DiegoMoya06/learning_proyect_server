@@ -51,8 +51,9 @@ spring:
     parameters:
       example:
         user-id:
-          - testUser-1
-          - testUser-2
+          - 1dbb034b-675b-4be3-98dc-a8ef0422ff29
+          - 6dfe3a23-cb90-4dec-a39d-205df1bbd503
+          - 6a36ff3a-83ac-4c75-a7d2-f901d3b46888
         type-id:
           - 64f6331e-11f5-456d-afed-518451ec1eca
           - 55ce92df-199c-42f2-a32f-dc6c12de8581

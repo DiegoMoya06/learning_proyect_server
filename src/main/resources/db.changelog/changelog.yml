@@ -21,10 +21,17 @@ databaseChangeLog:
       file: changes/card.lqb.yml
       relativeToChangelogFile: true
   - include:
+      file: changes/user.lqb.yml
+      relativeToChangelogFile: true
+  - include:
       file: example-data/example-types.lqb.yml
       relativeToChangelogFile: true
       context: exampleData
   - include:
       file: example-data/example-decks.lqb.yml
+      relativeToChangelogFile: true
+      context: exampleData
+  - include:
+      file: example-data/example-users.lqb.yml
       relativeToChangelogFile: true
       context: exampleData

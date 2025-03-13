@@ -1,0 +1,80 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert example users
+      author: diego.moya
+      preConditions:
+        - tableExists:
+            schemaName: ${schema.name}
+            tableName: user
+        - onFail: HALT
+        - onFailMessage: Required table 'user' not found!
+      changes:
+        - insert:
+            schemaName: ${schema.name}
+            tableName: user
+            columns:
+              - column:
+                  name: id #PK
+                  value: ${example.user-id.0}
+              - column:
+                  name: username
+                  value: 'AlexandroF1'
+              - column:
+                  name: password
+                  value: '%uMnuSV=nvK}^ak,9T,b'
+              - column:
+                  name: name
+                  value: 'Alexandro'
+              - column:
+                  name: lastname
+                  value: 'Flores'
+              - column:
+                  name: email
+                  value: 'af@email.com'
+              - column:
+                  name: ${column.created}
+                  value: now()
+              - column:
+                  name: ${column.updated}
+                  value: now()
+              - column:
+                  name: ${column.created-by}
+                  value: ${example.user-id.3}
+              - column:
+                  name: ${column.updated-by}
+                  value: ${example.user-id.3}
+
+        - insert:
+            schemaName: ${schema.name}
+            tableName: user
+            columns:
+              - column:
+                  name: id #PK
+                  value: ${example.user-id.2}
+              - column:
+                  name: username
+                  value: 'JorgeS1'
+              - column:
+                  name: password
+                  value: 'M(Ybzgu]X5Sr[TeVId18'
+              - column:
+                  name: name
+                  value: 'Jorge'
+              - column:
+                  name: lastname
+                  value: 'Serena'
+              - column:
+                  name: email
+                  value: 'js@email.com'
+              - column:
+                  name: ${column.created}
+                  value: now()
+              - column:
+                  name: ${column.updated}
+                  value: now()
+              - column:
+                  name: ${column.created-by}
+                  value: ${example.user-id.3}
+              - column:
+                  name: ${column.updated-by}
+                  value: ${example.user-id.3}
