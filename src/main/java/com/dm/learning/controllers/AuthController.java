@@ -23,8 +23,9 @@ public class AuthController {
 
     private final AuthenticationManager authenticationManager;
 
-    @Value("${LC_SECRET_KEY}")
-    private String SECRET_KEY;
+//    TODO: check
+//    @Value("${LC_SECRET_KEY}")
+    private String SECRET_KEY = "secret_key";
 
     public AuthController(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
