@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.time.Instant;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Stream;
@@ -56,6 +57,10 @@ public class CardDto extends BaseDto {
     }
 
     public static List<CardDto> fromEntitiesAsList(Collection<Card> entities) {
-        return fromEntities(entities).toList();
+        Comparator<CardDto> cardNameComparator = Comparator.comparing(CardDto::getTitle);
+        var formattedList = new java.util.ArrayList<>(fromEntities(entities).toList());
+        formattedList.sort(cardNameComparator);
+
+        return formattedList;
     }
 }

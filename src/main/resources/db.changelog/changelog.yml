@@ -35,3 +35,7 @@ databaseChangeLog:
       file: example-data/example-users.lqb.yml
       relativeToChangelogFile: true
       context: exampleData
+  - include:
+      file: example-data/example-cards.lqb.yml
+      relativeToChangelogFile: true
+      context: exampleData

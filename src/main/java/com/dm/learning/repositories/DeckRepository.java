@@ -11,6 +11,6 @@ import java.util.UUID;
 @Repository
 public interface DeckRepository extends JpaRepository<Deck, UUID> {
 
-    @Query("SELECT d FROM Deck d JOIN FETCH d.type")
+    @Query("SELECT d FROM Deck d JOIN FETCH d.type LEFT JOIN FETCH d.cards")
     List<Deck> findAllWithType();
 }

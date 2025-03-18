@@ -61,3 +61,8 @@ spring:
           - d14cd912-3f45-48d9-bf8d-454d1d2ac5b9
           - b99f14b7-8071-4859-968b-11023a98b497
           - 7aaf600c-77f6-4e99-a557-0f0a9dd19357
+        card-id:
+          - 0be624fe-7a85-4684-b37f-6f09304c9bc8
+          - 7abec5cb-3dad-4c1e-8543-3b6a51b2adf2
+          - ae867015-3ef2-4f52-9c61-34bb950f91fe
+        card-initial-rate: 1.0
