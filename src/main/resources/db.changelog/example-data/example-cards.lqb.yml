@@ -1,0 +1,124 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert example cards
+      author: diego.moya
+      preConditions:
+        - tableExists:
+            schemaName: ${schema.name}
+            tableName: card
+        - onFail: WARN
+        - onFailMessage: Required table 'card' not found!
+      changes:
+        - insert:
+            schemaName: ${schema.name}
+            tableName: card
+            columns:
+              - column:
+                  name: id #PK
+                  value: ${example.card-id.0}
+              - column:
+                  name: title
+                  value: 'Card test 01'
+              - column:
+                  name: description
+                  value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a placerat dolor. Curabitur eget cursus arcu. Ut in tortor sed quam congue convallis. Aenean ut dui consectetur, iaculis nisi vel, dictum enim. '
+              - column:
+                  name: deck_id
+                  value: ${example.deck-id.0}
+              - column:
+                  name: rate
+                  value: ${example.card-initial-rate}
+              - column:
+                  name: times_displayed
+                  value: 0
+              - column:
+                  name: probability
+                  value: 0.33333
+              - column:
+                  name: ${column.created}
+                  value: now()
+              - column:
+                  name: ${column.updated}
+                  value: now()
+              - column:
+                  name: ${column.created-by}
+                  value: ${example.user-id.0}
+              - column:
+                  name: ${column.updated-by}
+                  value: ${example.user-id.0}
+
+        - insert:
+            schemaName: ${schema.name}
+            tableName: card
+            columns:
+              - column:
+                  name: id #PK
+                  value: ${example.card-id.1}
+              - column:
+                  name: title
+                  value: 'Card test 02'
+              - column:
+                  name: description
+                  value: 'Adipiscing elit. Curabitur a placerat dolor. Curabitur eget cursus arcu. Ut in tortor sed quam congue convallis. Aenean ut dui consectetur, iaculis nisi vel, dictum enim. '
+              - column:
+                  name: deck_id
+                  value: ${example.deck-id.0}
+              - column:
+                  name: rate
+                  value: ${example.card-initial-rate}
+              - column:
+                  name: times_displayed
+                  value: 0
+              - column:
+                  name: probability
+                  value: 0.33333
+              - column:
+                  name: ${column.created}
+                  value: now()
+              - column:
+                  name: ${column.updated}
+                  value: now()
+              - column:
+                  name: ${column.created-by}
+                  value: ${example.user-id.0}
+              - column:
+                  name: ${column.updated-by}
+                  value: ${example.user-id.0}
+
+        - insert:
+            schemaName: ${schema.name}
+            tableName: card
+            columns:
+              - column:
+                  name: id #PK
+                  value: ${example.card-id.2}
+              - column:
+                  name: title
+                  value: 'Card test 03'
+              - column:
+                  name: description
+                  value: 'Curabitur a placerat dolor. Curabitur eget cursus arcu. Ut in tortor sed quam congue convallis. Aenean ut dui consectetur, iaculis nisi vel, dictum enim. '
+              - column:
+                  name: deck_id
+                  value: ${example.deck-id.0}
+              - column:
+                  name: rate
+                  value: ${example.card-initial-rate}
+              - column:
+                  name: times_displayed
+                  value: 0
+              - column:
+                  name: probability
+                  value: 0.33333
+              - column:
+                  name: ${column.created}
+                  value: now()
+              - column:
+                  name: ${column.updated}
+                  value: now()
+              - column:
+                  name: ${column.created-by}
+                  value: ${example.user-id.0}
+              - column:
+                  name: ${column.updated-by}
+                  value: ${example.user-id.0}

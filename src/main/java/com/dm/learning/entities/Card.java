@@ -18,7 +18,6 @@ import java.util.UUID;
 public class Card extends BaseEntity {
 
     @Id
-    @GeneratedValue
     @Column(nullable = false, updatable = false)
     private UUID id;
 
@@ -36,7 +35,7 @@ public class Card extends BaseEntity {
     @Column(name = "rate", nullable = false)
     private Double rate;
 
-    @Column(name = "displayed_times", nullable = false)
+    @Column(name = "times_displayed", nullable = false)
     private Integer timesDisplayed;
 
     @Column(name = "last_displayed")
