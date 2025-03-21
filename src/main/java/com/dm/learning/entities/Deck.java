@@ -17,6 +17,10 @@ import java.util.UUID;
 public class Deck extends BaseEntity {
 
     @Id
+//    @GeneratedValue(generator = "UUID")
+//    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+//    @GeneratedValue
+//    @UuidGenerator
     @Column(nullable = false, updatable = false)
     private UUID id;
 

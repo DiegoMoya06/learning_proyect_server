@@ -25,10 +25,6 @@ public class DeckServiceImpl extends BaseServiceImpl<DeckRepository> implements 
         Comparator<Deck> deckNameComparator = Comparator.comparing(Deck::getName);
 
         var entities = repository.findAllWithType();
-//        var entities = repository.findAll();
-        for (Deck deck : entities) {
-            System.out.println("DECK ID: " + deck.getId()); // Check if it's correct
-        }
         entities.sort(deckNameComparator);
 
         return DeckDto.fromEntitiesAsList(entities);
