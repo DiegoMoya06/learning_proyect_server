@@ -81,7 +81,9 @@ databaseChangeLog:
             columns:
               - column:
                   name: rate
-                  type: decimal(3,1)
+                  type: DOUBLE
+#                  type: decimal(3,1)
+#                  type: numeric(3,1)
                   constraints:
                     nullable: false
               - column:
@@ -96,6 +98,8 @@ databaseChangeLog:
                     nullable: true
               - column:
                   name: probability
-                  type: decimal(10,1)
+#                  type: decimal(10,1)
+#                  type: numeric(10,1)
+                  type: DOUBLE
                   constraints:
                     nullable: false

@@ -4,13 +4,16 @@ databaseChangeLog:
       author: diego.m
       preConditions:
         - sqlCheck:
-            dbms:
+            dbms: mysql
+#            dbms: postgresql
             expectedResult: 0
             sql: SELECT COUNT(*) FROM information_schema.schemata WHERE schema_name = '${schema.name}';
+#            sql: SELECT COUNT(*) FROM pg_namespace WHERE nspname = '${schema.name}';
         - onFail: WARN
         - onFailMessage: Schema ${schema.name} already exists!
       changes:
         - sql:
             dbms: mysql
+#            dbms: postgresql
             sql: CREATE SCHEMA IF NOT EXISTS ${schema.name}
             endDelimiter: ;

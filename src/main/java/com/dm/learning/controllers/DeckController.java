@@ -17,9 +17,13 @@ public class DeckController extends BaseController<DeckService> {
         super(service);
     }
 
+    /**
+     * getAll endpoint | GET
+     *
+     * @return allDecks
+     */
     @GetMapping(path = "")
     public ResponseEntity<List<DeckDto>> getAll() {
-//        TODO: add logs, tests and exception handling
         logger.info("DeckController was called");
         return ResponseEntity.ok(service.getAllDecks());
     }

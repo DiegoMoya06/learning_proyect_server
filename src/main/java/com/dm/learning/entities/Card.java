@@ -3,6 +3,8 @@ package com.dm.learning.entities;
 import com.dm.learning.entities.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -18,7 +20,8 @@ import java.util.UUID;
 public class Card extends BaseEntity {
 
     @Id
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false, columnDefinition = "CHAR(36)")
+    @JdbcTypeCode(SqlTypes.CHAR)
     private UUID id;
 
     @Column(name = "title", nullable = false)
@@ -30,6 +33,7 @@ public class Card extends BaseEntity {
     @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "deck_id")
+    @JdbcTypeCode(SqlTypes.CHAR)
     private Deck deck;
 
     @Column(name = "rate", nullable = false)
