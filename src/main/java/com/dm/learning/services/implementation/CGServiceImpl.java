@@ -60,7 +60,6 @@ public class CGServiceImpl implements CGService {
         logger.info(documentText);
         var requestEntity = createMsgRequest(INPUT + documentText);
 
-//        TODO: add validation for null
         ResponseEntity<Map> response = restTemplate.exchange(API_URL, HttpMethod.POST, requestEntity, Map.class);
         return response.getBody().toString();
     }
@@ -69,7 +68,6 @@ public class CGServiceImpl implements CGService {
     public String sendChatRequest(String userMessage) {
         var requestEntity = createMsgRequest(userMessage);
 
-//        TODO: add validation for null
         ResponseEntity<Map> response = restTemplate.exchange(API_URL, HttpMethod.POST, requestEntity, Map.class);
         return response.getBody().toString();
     }

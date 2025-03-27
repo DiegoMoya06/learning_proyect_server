@@ -15,5 +15,6 @@ public interface DeckRepository extends JpaRepository<Deck, UUID> {
     @Query("SELECT d FROM Deck d JOIN FETCH d.type LEFT JOIN FETCH d.cards")
     List<Deck> findAllWithType();
 
+    @Query("SELECT d FROM Deck d JOIN FETCH d.type LEFT JOIN FETCH d.cards WHERE d.name = :name")
     Optional<Deck> findDeckByName(String name);
 }

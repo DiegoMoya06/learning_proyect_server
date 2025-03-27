@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/cards")
@@ -15,10 +16,17 @@ public class CardController extends BaseController<CardService> {
         super(service);
     }
 
+    /**
+     * update endpoint | PUT
+     *
+     * @param id         uuid of the card
+     * @param weightType string weightType
+     * @return updated cardList
+     */
     @CrossOrigin(origins = "http://localhost:5173")
-    @PutMapping(path = "/{cardTitle}")
-    public ResponseEntity<List<CardDto>> updateCardsWeight(@PathVariable String cardTitle, @RequestBody String weightType) {
-        logger.info("CardController was called");
-        return ResponseEntity.ok(service.updateCardsWeight(cardTitle, weightType));
+    @PutMapping(path = "/{id}")
+    public ResponseEntity<List<CardDto>> updateCardsWeight(@PathVariable UUID id, @RequestBody String weightType) {
+        logger.info("CardController was called with cardId {} and weightType {}.", id, weightType);
+        return ResponseEntity.ok(service.updateCardsWeight(id, weightType));
     }
 }

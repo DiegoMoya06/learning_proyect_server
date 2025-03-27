@@ -1,6 +1,8 @@
 package com.dm.learning.services.implementation.base;
 
 import com.dm.learning.utils.BaseLogger;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -9,9 +11,8 @@ public abstract class BaseServiceImpl<R extends JpaRepository> extends BaseLogge
 
     protected final R repository;
 
-    //    TODO: check
-//    @PersistenceContext
-//    protected EntityManager entityManager;
+    @PersistenceContext
+    protected EntityManager entityManager;
 
     protected BaseServiceImpl(R repository) {
         this.repository = repository;

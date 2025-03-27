@@ -29,7 +29,7 @@ public class BaseEntity {
      * Point in time when the entry was updated.
      */
     @UpdateTimestamp
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     protected Instant updated;
 
     /**
